@@ -2,7 +2,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :users do |t|
       t.string :email, null: false
-      t.string :password, null: false
+      t.string :password_digest, null: false
       t.string :name, null: false
       t.integer :heat, null: false
       t.integer :location, null: false
@@ -15,7 +15,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.integer :history_art
       t.text :self_introduction, null: false
       
-      t.boolean :delete_flg
+      t.boolean :delete_flg, null: false, default: false
       t.timestamps
     end
   end

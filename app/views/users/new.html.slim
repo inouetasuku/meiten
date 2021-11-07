@@ -1,46 +1,49 @@
 h1 新規登録
 
-= form_with model: @user,local: true do |f|
+= form_with model: @user, local: true do |f|
   .form-group
     = f.label :email, 'メールアドレス'
-    = f.email_field :email, class: 'form-control',id: 'user_email'
+    = f.email_field :email, class: 'form-control', id: 'user_email'
   .form-group
     = f.label :password, 'パスワード'
-    = f.password_field :password, class: 'form-control',id: 'user_password'
+    = f.password_field :password, class: 'form-control', id: 'user_password'
+  .form-group
+    = f.label :password_confirmation, 'パスワード(確認)'
+    = f.password_field :password_confirmation, class: 'form-control', id: 'user_password_confirmation'
   .form-group
     = f.label :name, 'ユーザー名'
     = f.text_field :name, class: 'form-control', id: 'user_name'
   .form-group
     .col-sm-2
-      = f.label :heat, '熱量',{class: 'form-label'}
-      = f.select :heat,options_for_select(User.heats_i18n.invert),id: 'user_heat'
+      = f.label :heat, '熱量',{ class: 'form-label' }
+      = f.select :heat, options_for_select(User.heats_i18n.invert), id: 'user_heat'
   .form-group
     .col-sm-2
-      = f.label :location, '拠点',{class: 'form-label'}
-      = f.select :location,options_for_select(User.locations_i18n.invert),id: 'user_location'
+      = f.label :location, '拠点',{ class: 'form-label' }
+      = f.select :location, options_for_select(User.locations_i18n.invert), id: 'user_location'
   .form-group
     = f.label :location_detail, '拠点詳細'
-    = f.text_field :location_detail, class: 'form-control',id: 'user_location_detail'
+    = f.text_field :location_detail, class: 'form-control', id: 'user_location_detail'
   .form-group
     .col-sm-2
-      = f.label :sex, '性別',{class: 'form-label'}
-      = f.select :sex, options_for_select(User.sexes_i18n.invert),id: 'user_sex'
+      = f.label :sex, '性別',{ class: 'form-label' }
+      = f.select :sex, options_for_select(User.sexes_i18n.invert), id: 'user_sex'
   .form-group
     = f.label :age, '年齢'
-    = f.number_field :age, class: 'form-control',id: 'user_age'
+    = f.number_field :age, class: 'form-control', id: 'user_age'
   .form-group
     = f.label :hobby, '趣味'
-    = f.text_field :hobby, class: 'form-control',id: 'user_hobby'
+    = f.text_field :hobby, class: 'form-control', id: 'user_hobby'
   .form-group
     = f.label :special_skill, '特技'
-    = f.text_field :special_skill, class: 'form-control',id: 'user_special_skill'
+    = f.text_field :special_skill, class: 'form-control', id: 'user_special_skill'
   .form-group
     = f.label :office, '所属事務所'
-    = f.text_field :office, class: 'form-control',id: 'user_office'
+    = f.text_field :office, class: 'form-control', id: 'user_office'
   .form-group
     = f.label :history_art, '芸歴'
-    = f.text_field :history_art, class: 'form-control',id: 'user_history_art'
+    = f.text_field :history_art, class: 'form-control', id: 'user_history_art'
   .form-group
     = f.label :self_introduction, '自己紹介'
-    = f.text_field :self_introduction, class: 'form-control',id: 'user_self_introduction'
+    = f.text_field :self_introduction, class: 'form-control', id: 'user_self_introduction'
   = f.submit '登録する', class: 'btn btn-primary btn-block'
