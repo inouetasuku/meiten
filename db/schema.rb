@@ -21,19 +21,19 @@ ActiveRecord::Schema.define(version: 2021_10_30_064034) do
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
-    t.string "password", null: false
+    t.string "password_digest", null: false
     t.string "name", null: false
-    t.string "heat", null: false
-    t.string "location", null: false
+    t.integer "heat", null: false
+    t.integer "location", null: false
     t.string "location_detail", null: false
-    t.string "sex", null: false
+    t.integer "sex", null: false
     t.integer "age", null: false
     t.string "hobby"
     t.string "special_skill"
     t.string "office"
     t.integer "history_art"
     t.text "self_introduction", null: false
-    t.boolean "delete_flg"
+    t.boolean "delete_flg", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

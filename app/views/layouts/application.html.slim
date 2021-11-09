@@ -2,10 +2,16 @@ doctype html
 html
   head
     title
-      | Meiten
+      | meiten_mae
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
+    - if flash.notice.present?
+      .alert.alert-success = flash.notice
+    
+      /alert.alert-〇〇でアラートの色を決めている（bootstrap）
+      / = falsh〇〇の部分でcontroleerに書いたクラスを参考に処理を実行している  
+      end
     = yield
