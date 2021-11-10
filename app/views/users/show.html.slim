@@ -1,2 +1,45 @@
-h1　マイページ
+h1　ユーザー詳細画面
+
+table.table.table-hover 
+  tbody 
+    tr 
+      th = User.human_attribute_name(:name)
+      td = @user.name
+    tr 
+      th = User.human_attribute_name(:heat)
+      td = @user.heat
+    tr 
+      th = User.human_attribute_name(:age)
+      td = @user.age
+    tr 
+      th = User.human_attribute_name(:history_art)
+      td = @user.history_art
+    tr 
+      th = User.human_attribute_name(:location)
+      td = @user.location
+    tr 
+      th = User.human_attribute_name(:location)
+      td = @user.location
+    tr 
+      th = User.human_attribute_name(:location_detail)
+      td = @user.location_detail
+    tr 
+      th = User.human_attribute_name(:hobby)
+      td = @user.hobby
+    tr 
+      th = User.human_attribute_name(:special_skill)
+      td = @user.special_skill
+    tr 
+      th = User.human_attribute_name(:office)
+      td = @user.office
+    tr 
+      th = User.human_attribute_name(:self_introduction)
+      td = @user.self_introduction
+
+
+
+
+
+    
+
 
