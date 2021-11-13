@@ -8,9 +8,15 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
+    ul.navbar-nav.ml-auto 
+      - if current_user 
+        = "#{current_user.name}でログイン中"
+        li.nav-item= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
+      - else 
+        li.nav-item= link_to 'ログイン', login_url, class: 'navlink' 
+
     - if flash.notice.present?
       .alert.alert-success = flash.notice
-    
       /alert.alert-〇〇でアラートの色を決めている（bootstrap）
       / = falsh〇〇の部分でcontroleerに書いたクラスを参考に処理を実行している  
       end

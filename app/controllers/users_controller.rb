@@ -1,17 +1,18 @@
 class UsersController < ApplicationController
   def index
-    @user = User.all
+    @users = User.where.not(id: current_user)
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   def new
     @user = User.new
   end
 
-  def edit
-  end
+  # def edit
+  # end
 
   def create
     @user = User.new(user_params)
@@ -24,13 +25,18 @@ class UsersController < ApplicationController
     end
   end
 
-  def update
-  end
+  # def update
+  # end
 
-  def destroy
-  end
-
-
+  # def destroy
+  #   @user = User.find(params[:id])
+  #   @user.update(delete_flg: true)
+  #   # delte_flgをtrueにする⇨論理削除する
+  #   reset_session
+  #   flash[:notice] = 'ありがとうございました。頑張ってください'
+  #   redirect_to root_path
+  # end
+  
 
   private
 
