@@ -2,6 +2,7 @@ h1 ユーザー一覧表示
 
 / = link_to '退会する', logout_path(current_user), method: :put, 'data-confirm' => "本当に退会しますか？", class: 'btn btn-danger'
 
+
 .mb-3 
 table.table.table-hover 
   thead.thead-default 
@@ -21,4 +22,6 @@ table.table.table-hover
         td = user.location
 
 
-= link_to 'ログアウト', logout_path, method: :delete, class: 'btn btn-danger'
+/ = link_to 'ログアウト', logout_path, method: :delete, class: 'btn btn-danger'
+
+  
