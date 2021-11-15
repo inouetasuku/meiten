@@ -13,10 +13,13 @@
 ActiveRecord::Schema.define(version: 2021_10_30_064034) do
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "favoriting_id", null: false
-    t.integer "favorited_id", null: false
+    t.integer "favoriting_id"
+    t.integer "favorited_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["favorited_id"], name: "index_favorites_on_favorited_id"
+    t.index ["favoriting_id", "favorited_id"], name: "index_favorites_on_favoriting_id_and_favorited_id", unique: true
+    t.index ["favoriting_id"], name: "index_favorites_on_favoriting_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -2,6 +2,7 @@ class User < ApplicationRecord
 
   has_secure_password
 
+
   validates :email, presence: true 
   validates :name, presence: true
   validates :heat, presence: true
@@ -10,6 +11,7 @@ class User < ApplicationRecord
   validates :sex, presence: true
   validates :age, presence: true
   validates :self_introduction, presence: true
+
   
    
   enum heat: {
