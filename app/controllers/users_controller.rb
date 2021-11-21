@@ -25,9 +25,18 @@ class UsersController < ApplicationController
     end
   end
 
-  # def update
-  # end
+  def followings
+    user = User.find(params[:id])
+    @users = user.followings
+  end
 
+  def followers
+    user = User.find(params[:id])
+    @users = user.followers
+  end
+
+
+  #退会機能実装時に使用
   # def destroy
   #   @user = User.find(params[:id])
   #   @user.update(delete_flg: true)
@@ -36,7 +45,6 @@ class UsersController < ApplicationController
   #   flash[:notice] = 'ありがとうございました。頑張ってください'
   #   redirect_to root_path
   # end
-  
 
   private
 

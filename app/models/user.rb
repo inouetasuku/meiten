@@ -2,6 +2,23 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  # フォローする側からのhas_many
+  has_many :favorites, foreign_key: :following_id
+  has_many :followings, through: :favorites, source: :follower
+  # foreign_key: :favoritingを入り口としてsource: :favoritedを出口としてフォローしているユーザーを取得
+  # followingという仮想のテーブルでusersテーブルを区別している
+
+  # フォローされる側からのhas_many
+  has_many :reverse_of_favorites, class_name: 'Favorite', foreign_key: :follower_id
+  has_many :followers, through: :reverse_of_favorites, source: :following
+  # foreign_key: :favoritedを入り口として、 source: :favoritingを出口としてフォローされているユーザーを取得
+  # followerからはfavorited_idに複数フォローされているため、reverse_of_favoritesと記述している
+
+  
+  def is_followed_by?(user)
+    reverse_of_favorites.find_by(following_id: user.id).present?
+    # 引数に渡されたユーザーにフォローされているかどうかを判断する
+  end
 
   validates :email, presence: true 
   validates :name, presence: true
@@ -12,8 +29,6 @@ class User < ApplicationRecord
   validates :age, presence: true
   validates :self_introduction, presence: true
 
-  
-   
   enum heat: {
     プロ: 1,
     アマ: 2,

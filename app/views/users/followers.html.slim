@@ -1,0 +1,14 @@
+h1 フォロワー一覧
+
+
+table.table.table-hover 
+  tbody 
+    - @users.each do |user|   #eachの繰り返し処理で、1件ずつユーザーを表示
+      tr 
+        td = link_to user.name, user 
+        td = user.heat 
+        td = user.age 
+        td = user.sex 
+        td = user.location
+
+  
