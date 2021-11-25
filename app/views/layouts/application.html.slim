@@ -15,8 +15,11 @@ html
       - else 
         li.nav-item= link_to 'ログイン', login_url, class: 'navlink' 
 
-    - if flash.notice.present?
-      .alert.alert-success = flash.notice
+    - if flash[:notice]
+      = flash.notice
+    - else
+      = flash.alert
+ 
       /alert.alert-〇〇でアラートの色を決めている（bootstrap）
       / = falsh〇〇の部分でcontroleerに書いたクラスを参考に処理を実行している  
       end

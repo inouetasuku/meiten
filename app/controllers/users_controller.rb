@@ -35,7 +35,6 @@ class UsersController < ApplicationController
     @users = user.followers
   end
 
-
   #退会機能実装時に使用
   # def destroy
   #   @user = User.find(params[:id])
