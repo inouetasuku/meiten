@@ -38,7 +38,6 @@ table.table.table-hover
     = link_to "フォロー解除", user_favorites_path(@user), method: :delete, class: 'btn btn-danger' 
   - else
     = link_to "フォロー", user_favorites_path(@user), method: :post, class: 'btn btn-primary' 
-  end
 
   | フォロー
   = link_to @user.followings.count, followings_user_path(@user), class: "fs-6" 
