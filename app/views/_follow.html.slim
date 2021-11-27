@@ -1,4 +1,4 @@
-h1 マッチング画面
+table.table.table-hover 
 
 .mb-3 
 table.table.table-hover 
@@ -6,10 +6,14 @@ table.table.table-hover
     tr 
       th = User.human_attribute_name(:name)
       th = User.human_attribute_name(:heat)
-      th = User.human_attribute_name(:email)
-  tbody
+      th = User.human_attribute_name(:age)
+      th = User.human_attribute_name(:sex)
+      th = User.human_attribute_name(:location)
+  tbody 
     - @users.each do |user|   #eachの繰り返し処理で、1件ずつユーザーを表示
       tr 
         td = link_to user.name, user 
         td = user.heat 
-        td = user.email
+        td = user.age 
+        td = user.sex 
+        td = user.location

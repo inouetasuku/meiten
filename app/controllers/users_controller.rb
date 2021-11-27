@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_action :set_follow, only: [:followings, :followers]
+
   def index
     @users = User.where.not(id: current_user)
   end
@@ -25,9 +28,15 @@ class UsersController < ApplicationController
     end
   end
 
-  # def update
-  # end
+  def followings
+    @users = @user.followings
+  end
 
+  def followers
+    @users = @user.followers
+  end
+
+  #退会機能実装時に使用
   # def destroy
   #   @user = User.find(params[:id])
   #   @user.update(delete_flg: true)
@@ -36,9 +45,12 @@ class UsersController < ApplicationController
   #   flash[:notice] = 'ありがとうございました。頑張ってください'
   #   redirect_to root_path
   # end
-  
 
   private
+
+  def set_follow
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :name, :heat, :location, :location_detail, :sex, :age, :hobby, :special_skill, :office, :history_art, :self_introduction, :delete_flg)

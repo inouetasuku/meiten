@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 2021_10_30_064034) do
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "favoriting_id", null: false
-    t.integer "favorited_id", null: false
+    t.integer "following_id", null: false
+    t.integer "follower_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
