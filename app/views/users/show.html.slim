@@ -1,45 +1,47 @@
-h1 ユーザー詳細画面
+div.main-container
 
-table.table.table-hover 
-  tbody 
-    tr 
-      th = User.human_attribute_name(:name)
-      td = @user.name
-    tr 
-      th = User.human_attribute_name(:heat)
-      td = @user.heat
-    tr 
-      th = User.human_attribute_name(:age)
-      td = @user.age
-    tr 
-      th = User.human_attribute_name(:history_art)
-      td = @user.history_art
-    tr 
-      th = User.human_attribute_name(:location)
-      td = @user.location
-    tr 
-      th = User.human_attribute_name(:location_detail)
-      td = @user.location_detail
-    tr 
-      th = User.human_attribute_name(:hobby)
-      td = @user.hobby
-    tr 
-      th = User.human_attribute_name(:special_skill)
-      td = @user.special_skill
-    tr 
-      th = User.human_attribute_name(:office)
-      td = @user.office
-    tr 
-      th = User.human_attribute_name(:self_introduction)
-      td = @user.self_introduction
-  
+  h1 ユーザー詳細画面
 
-  - if @user.is_followed_by?(current_user)
-    = link_to "フォロー解除", user_favorites_path(@user), method: :delete, class: 'btn btn-danger' 
-  - else
-    = link_to "フォロー", user_favorites_path(@user), method: :post, class: 'btn btn-primary' 
+  table.table.table-hover 
+    tbody 
+      tr 
+        th = User.human_attribute_name(:name)
+        td = @user.name
+      tr 
+        th = User.human_attribute_name(:heat)
+        td = @user.heat
+      tr 
+        th = User.human_attribute_name(:age)
+        td = @user.age
+      tr 
+        th = User.human_attribute_name(:history_art)
+        td = @user.history_art
+      tr 
+        th = User.human_attribute_name(:location)
+        td = @user.location
+      tr 
+        th = User.human_attribute_name(:location_detail)
+        td = @user.location_detail
+      tr 
+        th = User.human_attribute_name(:hobby)
+        td = @user.hobby
+      tr 
+        th = User.human_attribute_name(:special_skill)
+        td = @user.special_skill
+      tr 
+        th = User.human_attribute_name(:office)
+        td = @user.office
+      tr 
+        th = User.human_attribute_name(:self_introduction)
+        td = @user.self_introduction
+    
 
-  | フォロー
-  = link_to @user.followings.count, followings_user_path(@user), class: "fs-6" 
-  | フォロワー
-  = link_to @user.followers.count, followers_user_path(@user), class: "fs-6"
+    - if @user.is_followed_by?(current_user)
+      = link_to "フォロー解除", user_favorites_path(@user), method: :delete, class: 'btn btn-danger' 
+    - else
+      = link_to "フォロー", user_favorites_path(@user), method: :post, class: 'btn btn-primary' 
+
+    | フォロー
+    = link_to @user.followings.count, followings_user_path(@user), class: "fs-6" 
+    | フォロワー
+    = link_to @user.followers.count, followers_user_path(@user), class: "fs-6"

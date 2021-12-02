@@ -21,7 +21,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     # user_paramsはPOSTデータをチェックするメソッド 
     if @user.save
-      redirect_to users_url, notice: "ユーザー「#{@user.name}」を登録しました"
+      session[:user_id] = @user.id
+      redirect_to root_path, notice: "ユーザー「#{@user.name}」を登録しました"
     else
       flash.now[:alert] = "未記入の欄がをあります"
       render :new
