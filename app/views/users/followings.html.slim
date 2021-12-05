@@ -1,5 +1,13 @@
 div.main-container
-  h1 フォロー一覧
 
-  = render partial: '/follow'
-    
+  - if current_user
+
+    h1 フォロー一覧
+
+    = render partial: '/frends'
+  
+  - else 
+    div.icon_box
+      = link_to "新規登録お願いします", new_user_path, class: 'btn btn-primary btn-lg my-5'  
+      p 「明転前」は<br>
+        登録していただくことで、全ての機能が無料でお使いいただけます
