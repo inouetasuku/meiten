@@ -8,16 +8,35 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    ul.navbar-nav.ml-auto 
-      - if current_user 
-        = "#{current_user.name}でログイン中"
-        li.nav-item= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
-      - else 
-        li.nav-item= link_to 'ログイン', login_url, class: 'navlink' 
-
     - if flash.notice
-      .alert.alert-success = flash.notice
+      .alert.alert = flash.notice
       /alert.alert-〇〇でアラートの色を決めている（bootstrap）
       / = falsh〇〇の部分でcontroleerに書いたクラスを参考に処理を実行している  
-      
-    = yield
+    
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.px-5
+      - if current_user
+        div.container-fluid
+          nav.navbar-brand = "#{current_user.name}"
+        ul.navbar-nav.me-auto.mb-2.mb-lg-0.small
+          li.nav-item = link_to users_path, class: 'nav-link' do
+            div.icon_box
+              = icon 'far', 'address-book fa-3x mx-3'
+              p ユーザー
+          li.nav-item = link_to favorites_path, class: 'nav-link' do 
+            div.icon_box
+              = icon 'fas', 'heartbeat fa-3x mx-3'
+              p マッチング
+          li.nav-item = link_to followings_user_path(current_user), class: 'nav-link' do
+            div.icon_box
+              = icon 'far', 'thumbs-up fa-3x mx-3'
+              p フォロー
+          li.nav-item = link_to followers_user_path(current_user), class: 'nav-link' do 
+            div.icon_box
+              = icon 'far', 'hand-point-up fa-3x mx-3'
+              p フォロワー
+          li.nav-item = link_to logout_path, method: :delete, class: 'nav-link' do 
+            div.box
+              = icon 'fas', 'sign-out-alt fa-3x mx-3'
+              p ログアウト
+
+  = yield

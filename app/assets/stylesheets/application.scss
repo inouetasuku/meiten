@@ -1,1 +1,37 @@
 @import "bootstrap"; 
+@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+.icon::before {
+  font-family: "Font Awesome 5 Free"; 
+  font-weight: 900;
+  content: "\f007";
+}
+
+.icon_box {
+  text-align: center;
+}
+
+h1 {
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
+
+.form-group {
+  margin-top: 2em;
+}
+
+.main-container {
+  font-family: 'RocknRoll One', sans-serif;
+  width: 700px;
+  margin: auto;
+}
+
+.navbar {
+  font-family: 'RocknRoll One', sans-serif;
+}
+
+.alert {
+  font-family: 'RocknRoll One', sans-serif;
+}

@@ -1,49 +1,55 @@
-h1 新規登録
+div.main-container
 
-= form_with model: @user, local: true do |f|
-  .form-group
-    = f.label :email, 'メールアドレス'
-    = f.email_field :email, class: 'form-control', id: 'user_email'
-  .form-group
-    = f.label :password, 'パスワード'
-    = f.password_field :password, class: 'form-control', id: 'user_password'
-  .form-group
-    = f.label :password_confirmation, 'パスワード(確認)'
-    = f.password_field :password_confirmation, class: 'form-control', id: 'user_password_confirmation'
-  .form-group
-    = f.label :name, 'ユーザー名'
-    = f.text_field :name, class: 'form-control', id: 'user_name'
-  .form-group
-    .col-sm-2
-      = f.label :heat, '熱量',{ class: 'form-label' }
+  h1 新規登録
+
+  = form_with model: @user, local: true do |f|
+    .form-group
+      = f.label :email, 'メールアドレス'
+      = f.email_field :email, class: 'form-control col-sm-5', id: 'user_email', placeholder: "meiten@sample.com", required: true
+      | ＊入力必須
+    .form-group
+      = f.label :password, 'パスワード'
+      = f.password_field :password, class: 'form-control col-sm-5', id: 'user_password', required: true
+      | *入力必須
+    .form-group
+      = f.label :password_confirmation, 'パスワード(確認)'
+      = f.password_field :password_confirmation, class: 'form-control col-sm-5', id: 'user_password_confirmation', required: true
+      | *確認のため、もう一度パスワードを入力してください
+    .form-group
+      = f.label :name, 'ユーザー名'
+      = f.text_field :name, class: 'form-control col-sm-3', id: 'user_name', required: true
+      | *入力必須
+    .form-group
+      = f.label :heat, '熱量', class: 'form-label' 
       = f.select :heat, options_for_select(User.heats_i18n.invert), id: 'user_heat'
-  .form-group
-    .col-sm-2
-      = f.label :location, '拠点',{ class: 'form-label' }
+    .form-group
+      = f.label :location, '拠点', class: 'form-label' 
       = f.select :location, options_for_select(User.locations_i18n.invert), id: 'user_location'
-  .form-group
-    = f.label :location_detail, '拠点詳細'
-    = f.text_field :location_detail, class: 'form-control', id: 'user_location_detail'
-  .form-group
-    .col-sm-2
-      = f.label :sex, '性別',{ class: 'form-label' }
+    .form-group
+      = f.label :location_detail, '拠点詳細'
+      = f.text_field :location_detail, class: 'form-control col-sm-2', id: 'user_location_detail', placeholder: "例）東京", required: true 
+      | *入力必須
+    .form-group
+      = f.label :sex, '性別', class: 'form-label' 
       = f.select :sex, options_for_select(User.sexes_i18n.invert), id: 'user_sex'
-  .form-group
-    = f.label :age, '年齢'
-    = f.number_field :age, class: 'form-control', id: 'user_age'
-  .form-group
-    = f.label :hobby, '趣味'
-    = f.text_field :hobby, class: 'form-control', id: 'user_hobby'
-  .form-group
-    = f.label :special_skill, '特技'
-    = f.text_field :special_skill, class: 'form-control', id: 'user_special_skill'
-  .form-group
-    = f.label :office, '所属事務所'
-    = f.text_field :office, class: 'form-control', id: 'user_office'
-  .form-group
-    = f.label :history_art, '芸歴'
-    = f.text_field :history_art, class: 'form-control', id: 'user_history_art'
-  .form-group
-    = f.label :self_introduction, '自己紹介'
-    = f.text_field :self_introduction, class: 'form-control', id: 'user_self_introduction'
-  = f.submit '登録する', class: 'btn btn-primary btn-block'
+    .form-group
+      = f.label :age, '年齢'
+      = f.text_field :age, class: 'form-control col-sm-1', id: 'user_age', required: true
+      | 半角英数字で入力してください
+    .form-group
+      = f.label :hobby, '趣味'
+      = f.text_area :hobby, rows: 2, class: 'form-control col-sm-7', id: 'user_hobby', placeholder: "タバコ  手巻きタバコやパイプなどを吸うこと"
+    .form-group
+      = f.label :special_skill, '特技'
+      = f.text_area :special_skill, rows: 2, class: 'form-control col-sm-7', id: 'user_special_skill', placeholder: "何回同じものを見ても、初めて見たようなリアクションが取れる" 
+    .form-group
+      = f.label :office, '所属事務所'
+      = f.text_field :office, class: 'form-control', id: 'user_office', placeholder: "所属されていない場合は「なし」と入力" 
+    .form-group
+      = f.label :history_art, '芸歴'
+      = f.text_field :history_art, class: 'form-control col-sm-1', id: 'user_history_art'
+    .form-group
+      = f.label :self_introduction, '自己紹介'
+      = f.text_area :self_introduction, rows: 3, class: 'form-control', id: 'user_self_introduction', placeholder: "よろしくお願いします", required: true
+      | *入力必須
+    = f.submit '登録する', class: 'btn btn-primary btn-block'
