@@ -37,6 +37,16 @@ class UsersController < ApplicationController
     @users = @user.followers
   end
 
+  def focus_pro
+    @users = User.where(heat: "プロ")
+    render :index
+  end
+
+  def focus_ama
+    @users = User.where(heat: "アマ")
+    render :index
+  end
+
   #退会機能実装時に使用
   # def destroy
   #   @user = User.find(params[:id])

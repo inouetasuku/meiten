@@ -1,16 +1,22 @@
 div.main-container
-  h1 マッチング画面
+  - if current_user
+    h1 マッチング画面
 
-  .mb-3 
-  table.table.table-hover 
-    thead.thead-default 
-      tr 
-        th = User.human_attribute_name(:name)
-        th = User.human_attribute_name(:heat)
-        th = User.human_attribute_name(:email)
-    tbody
-      - @users.each do |user|   #eachの繰り返し処理で、1件ずつユーザーを表示
+    .mb-3 
+    table.table.table-hover 
+      thead.thead-default 
         tr 
-          td = link_to user.name, user 
-          td = user.heat 
-          td = user.email
+          th = User.human_attribute_name(:name)
+          th = User.human_attribute_name(:heat)
+          th = User.human_attribute_name(:email)
+      tbody
+        - @users.each do |user|   #eachの繰り返し処理で、1件ずつユーザーを表示
+          tr 
+            td = link_to user.name, user 
+            td = user.heat 
+            td = user.email
+   - else 
+    div.icon_box
+      = link_to "新規登録お願いします", new_user_path, class: 'btn btn-primary btn-lg my-5'  
+      p 「明転前」は<br>
+        登録していただくことで、全ての機能が無料でお使いいただけます
