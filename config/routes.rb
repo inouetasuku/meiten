@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/favorites', to: 'favorites#index'
-  get '/focus_pro', to: 'users#focus_pro'
-  get '/focus_ama', to: 'users#focus_ama'
+  get 'search', to: 'users#search'
 
   root to: 'users#index'
   resources :users do

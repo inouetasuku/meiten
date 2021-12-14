@@ -18,16 +18,6 @@ html
         div.container-fluid
           nav.navbar-brand = "#{current_user.name}"
         ul.navbar-nav.me-auto.mb-2.mb-lg-0.small
-          div.focus_box.d-flex.mx-5
-            p.fa-2x.text-light 検索
-            li.nav-item = link_to focus_pro_path, class: 'nav-link' do
-              div.icon_box
-                = icon 'fas', 'search fa-3x mx-2'
-                p プロ
-            li.nav-item = link_to focus_ama_path, class: 'nav-link' do
-              div.icon_box
-                = icon 'fas', 'search fa-3x mx-2'
-                p アマ
           li.nav-item = link_to users_path, class: 'nav-link' do
             div.icon_box
               = icon 'far', 'address-book fa-3x mx-3'
