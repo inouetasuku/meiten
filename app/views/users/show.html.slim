@@ -4,6 +4,21 @@ div.main-container
 
     h1 ユーザー詳細画面
 
+    - if current_user != @user
+
+      - if @user.is_followed_by?(current_user)
+        = link_to "フォロー解除", user_favorites_path(@user), method: :delete, class: 'btn btn-danger' 
+      - else
+        = link_to "フォロー", user_favorites_path(@user), method: :post, class: 'btn btn-primary' 
+
+      | フォロー
+      = link_to @user.followings.count, followings_user_path(@user), class: "fs-6" 
+      | フォロワー
+      = link_to @user.followers.count, followers_user_path(@user), class: "fs-6"
+
+    - else
+      = link_to "編集", edit_user_path, class:"btn btn-primary"
+
     table.table.table-hover 
       tbody 
         tr 
@@ -36,20 +51,9 @@ div.main-container
         tr 
           th = User.human_attribute_name(:self_introduction)
           td = @user.self_introduction
-      
-
-      - if @user.is_followed_by?(current_user)
-        = link_to "フォロー解除", user_favorites_path(@user), method: :delete, class: 'btn btn-danger' 
-      - else
-        = link_to "フォロー", user_favorites_path(@user), method: :post, class: 'btn btn-primary' 
-
-      | フォロー
-      = link_to @user.followings.count, followings_user_path(@user), class: "fs-6" 
-      | フォロワー
-      = link_to @user.followers.count, followers_user_path(@user), class: "fs-6"
 
   - else 
     div.icon_box
-      = link_to "新規登録お願いします", new_user_path, class: 'btn btn-primary btn-lg my-5'  
+      = link_to "TOPページへ", login_path, class: 'btn btn-primary btn-lg my-5'  
       p 「明転前」は<br>
         登録していただくことで、全ての機能が無料でお使いいただけます
