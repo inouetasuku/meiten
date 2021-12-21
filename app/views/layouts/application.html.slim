@@ -22,6 +22,10 @@ html
             div.icon_box
               = icon 'far', 'address-book fa-3x mx-3'
               p ユーザー
+          li.nav-item = link_to user_path(current_user), class: 'nav-link' do
+            div.icon_box
+              = icon 'fas', 'user fa-3x mx-3'
+              p アカウント
           li.nav-item = link_to favorites_path, class: 'nav-link' do 
             div.icon_box
               = icon 'fas', 'heartbeat fa-3x mx-3'

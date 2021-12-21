@@ -1,11 +1,36 @@
 div.main-container
-  h1 ログイン
+  h1 明転前
+  | 明転前とは・・・<br>
+    <br>
+    このアプリはお笑い芸人の相方を探すためのマッチングアプリです。<br>
+    これからお笑い芸人を目指すプロ志望の方や<br>
+    アマチュアとして、賞レースに出てみたい人など<br>
+    「相方探し」されたい方はぜひご利用ください！<br>
+    <br>
+    <br>
 
-  = form_with scope: :session, local: true do |f|
-    .form-group 
-      = f.label :email, 'メールアドレス'
-      = f.email_field :email, class: 'form-control', id: 'sessions_email'
-    .form-group 
-      = f.label :password, 'パスワード'
-      = f.password_field :password, class: 'form-control', id: 'sessions_password'
-    = f.submit 'ログインする', class: 'btn btn-primary'
+    利用方法・・・<br>
+    <br>
+    メールアドレスや活動場所、お笑いへの熱量などの情報を登録していただき<br>
+    利用できるようになります。本アプリに登録しているユーザーの中から<br>
+    ご自身に合うユーザーを探してみてください<br>
+    検索方法は「活動拠点」や「お笑いへの熱量」などで検索していただくことが可能です。<br>
+    気になるユーザーを「フォロー」することができ<br>
+    相互フォローの関係になると「マッチング」になります。<br>
+    <br>
+    マッチングの関係になったユーザー同士には「メールアドレス」が表示されるようになり<br>
+    「メールアドレス」からユーザーに連絡をお取りください。<br>
+    <br>
+    みなさまのご活躍、ご健闘をお祈りしています！！
+
+  div.form
+    = form_with scope: :session, local: true do |f|
+      .form-group 
+        = f.label :email, 'メールアドレス'
+        = f.email_field :email, class: 'form-control', id: 'sessions_email'
+      .form-group 
+        = f.label :password, 'パスワード'
+        = f.password_field :password, class: 'form-control', id: 'sessions_password'
+      = f.submit 'ログインする', class: 'btn btn-primary'
+
+    = link_to '新規登録', new_user_path, { class: 'btn btn-primary', class: 'fa-2x m-5'}

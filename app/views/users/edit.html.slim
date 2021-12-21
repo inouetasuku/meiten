@@ -1,1 +1,51 @@
-| h1 | Users#edit p | Find me in app/views/users/edit.html.erb 
+div.main-container
+
+  - if current_user
+
+    h1 ユーザー情報変更 
+
+    = form_with model: @user, local: true do |f|
+      .form-group
+        = f.label :name, 'ユーザー名'
+        = f.text_field :name, class: 'form-control col-sm-3', id: 'user_name', required: true
+        | *入力必須
+      .form-group
+        = f.label :heat, '熱量', class: 'form-label' 
+        = f.select :heat, options_for_select(User.heats_i18n.invert), id: 'user_heat'
+      .form-group
+        = f.label :location, '拠点', class: 'form-label' 
+        = f.select :location, options_for_select(User.locations_i18n.invert), id: 'user_location'
+      .form-group
+        = f.label :location_detail, '拠点詳細'
+        = f.text_field :location_detail, class: 'form-control col-sm-2', id: 'user_location_detail', placeholder: "例）東京", required: true 
+        | *入力必須
+      .form-group
+        = f.label :sex, '性別', class: 'form-label' 
+        = f.select :sex, options_for_select(User.sexes_i18n.invert), id: 'user_sex'
+      .form-group
+        = f.label :age, '年齢'
+        = f.text_field :age, class: 'form-control col-sm-1', id: 'user_age', required: true
+        | 半角英数字で入力してください
+      .form-group
+        = f.label :hobby, '趣味'
+        = f.text_area :hobby, rows: 2, class: 'form-control col-sm-7', id: 'user_hobby', placeholder: "タバコ  手巻きタバコやパイプなどを吸うこと"
+      .form-group
+        = f.label :special_skill, '特技'
+        = f.text_area :special_skill, rows: 2, class: 'form-control col-sm-7', id: 'user_special_skill', placeholder: "何回同じものを見ても、初めて見たようなリアクションが取れる" 
+      .form-group
+        = f.label :office, '所属事務所'
+        = f.text_field :office, class: 'form-control', id: 'user_office', placeholder: "所属されていない場合は「なし」と入力" 
+      .form-group
+        = f.label :history_art, '芸歴'
+        = f.text_field :history_art, class: 'form-control col-sm-1', id: 'user_history_art'
+      .form-group
+        = f.label :self_introduction, '自己紹介'
+        = f.text_area :self_introduction, rows: 3, class: 'form-control', id: 'user_self_introduction', placeholder: "よろしくお願いします", required: true
+        | *入力必須
+      = f.submit '編集を完了する', class: 'btn btn-primary'
+
+  - else 
+    div.icon_box
+      = link_to "新規登録お願いします", login_path, class: 'btn btn-primary btn-lg my-5'  
+      p 「明転前」は<br>
+        登録していただくことで、全ての機能が無料でお使いいただけます

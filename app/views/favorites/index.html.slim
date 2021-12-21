@@ -2,6 +2,11 @@ div.main-container
   - if current_user
     h1 マッチング画面
 
+    | マッチングしたユーザーのみメールアドレスを表示しています<br>
+      メールアドレスからマッチングしたユーザーに連絡をしてください<br>
+      ご活躍、ご健闘をお祈りしています<br>
+      <br>
+
     .mb-3 
     table.table.table-hover 
       thead.thead-default 
@@ -15,8 +20,8 @@ div.main-container
             td = link_to user.name, user 
             td = user.heat 
             td = user.email
-   - else 
+  - else 
     div.icon_box
-      = link_to "新規登録お願いします", new_user_path, class: 'btn btn-primary btn-lg my-5'  
+      = link_to "TOPページへ", login_path, class: 'btn btn-primary btn-lg my-5'  
       p 「明転前」は<br>
         登録していただくことで、全ての機能が無料でお使いいただけます
