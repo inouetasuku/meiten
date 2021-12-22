@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/favorites', to: 'favorites#index'
   get '/search', to: 'users#search'
 
-  root to: 'users#index'
+  root to: 'sessions#new'
   resources :users do
     resource :favorites, only: [:create, :destroy]
     get :followings, on: :member
