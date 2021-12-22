@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
     if user&.authenticate(session_params[:password])
       session[:user_id] = user.id
-      redirect_to root_url, notice: 'ログインしました'
+      redirect_to users_path, notice: 'ログインしました'
     else
       render :new
     end
