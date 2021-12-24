@@ -57,13 +57,11 @@ class UsersController < ApplicationController
   end
 
   def search
-    @users = User.where(heat: params[:search_heat]).where(location: params[:search_location])  
+    @users = User.where(heat: params[:heat_keyword], location: params[:location_keyword])
     if @users.present?
       render :index
     elsif
-      @users = User.merge(User.where(heat: params[:search_heat]).or(User.where(location: params[:search_location])))
-      render :index
-    else
+      @users = User.where(heat: params[:heat_keyword]).or(User.where(location: params[:location_keyword]))
       render :index
     end
   end
