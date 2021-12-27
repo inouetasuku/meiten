@@ -58,12 +58,7 @@ class UsersController < ApplicationController
 
   def search
     @users = User.where(heat: params[:heat_keyword], location: params[:location_keyword])
-      if @users.count != 0 or params[:heat_keyword == "".presence] or params[:location_keyword == "".presence] 
-        render :index
-      else
-        @users = User.where(heat: params[:heat_keyword]).or(User.where(location: params[:location_keyword]))
-        render :index
-      end
+    render :index
   end
 
   #退会機能実装時に使用
