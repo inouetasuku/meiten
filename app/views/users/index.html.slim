@@ -9,6 +9,10 @@ div.main-container
         = f.select :heat_keyword, User.heats.keys, {include_blank: "熱量を選択"}
         = f.select :location_keyword, User.locations.keys, {include_blank: "拠点を選択"}
         = f.submit "検索"
+        - if @users.count == 0
+          <br>
+          <br>
+          p ユーザーが見つかりません 
 
     .mb-3 
     table.table.table-hover 
