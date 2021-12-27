@@ -58,7 +58,7 @@ class UsersController < ApplicationController
 
   def search
     @users = User.where(heat: params[:heat_keyword], location: params[:location_keyword])
-      if @users.count != 0
+      if @users.count != 0 or params[:heat_keyword == ""] or params[:location_keyword == ""] 
         render :index
       else
         @users = User.where(heat: params[:heat_keyword]).or(User.where(location: params[:location_keyword]))
