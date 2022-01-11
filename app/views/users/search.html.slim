@@ -1,0 +1,22 @@
+h1 ユーザー一覧
+ 
+.mb-3 
+table.table.table-hover 
+  thead.thead-default 
+    tr 
+      th = User.human_attribute_name(:name)
+      th = User.human_attribute_name(:heat)
+      th = User.human_attribute_name(:age)
+      th = User.human_attribute_name(:sex)
+      th = User.human_attribute_name(:location)
+  tbody
+    - @users.each do |user|   #eachの繰り返し処理で、1件ずつユーザーを表示
+      tr 
+        td = link_to user.name, user 
+        td = user.heat 
+        td = user.age 
+        td = user.sex 
+        td = user.location
+
+
+
